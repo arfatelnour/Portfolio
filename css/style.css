@@ -4,7 +4,8 @@
     --card-bg: #141414;
     --text-main: #e0e0e0;
     --text-muted: #888888;
-    --accent-color: #3b82f6; /* Blue by default, can be changed */
+    --accent-color: #3b82f6;
+    /* Blue by default, can be changed */
     --accent-glow: rgba(59, 130, 246, 0.4);
     --gradient-1: #3b82f6;
     --gradient-2: #8b5cf6;
@@ -56,7 +57,10 @@ img {
 }
 
 /* Typography */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
     font-family: var(--font-heading);
     font-weight: 700;
     line-height: 1.1;
@@ -147,13 +151,14 @@ h1, h2, h3, h4 {
     position: fixed;
     width: 400px;
     height: 400px;
-    background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(0,0,0,0) 70%);
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
     border-radius: 50%;
     pointer-events: none;
     transform: translate(-50%, -50%);
     z-index: -1;
     transition: transform 0.1s;
-    display: none; /* JS will enable/update this */
+    display: none;
+    /* JS will enable/update this */
 }
 
 /* Navbar */
@@ -177,14 +182,22 @@ h1, h2, h3, h4 {
 }
 
 .logo {
-    font-family: var(--font-heading);
-    font-size: 1.5rem;
-    font-weight: 800;
-    letter-spacing: -1px;
+    display: flex;
+    align-items: center;
 }
 
-.logo .dot {
-    color: var(--accent-color);
+.logo img {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(59, 130, 246, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.logo:hover img {
+    transform: rotate(10deg);
+    border-color: var(--accent-color);
 }
 
 .nav-links {
@@ -208,7 +221,7 @@ h1, h2, h3, h4 {
     cursor: pointer;
 }
 
-/* Hero Section */
+/* Hero Section Styles */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -261,22 +274,46 @@ h1, h2, h3, h4 {
     position: relative;
     width: 400px;
     height: 400px;
-}
-
-.glow-circle {
-    width: 300px;
-    height: 300px;
-    background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     animation: float 6s ease-in-out infinite;
 }
 
+.img-container {
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid rgba(59, 130, 246, 0.3);
+    box-shadow: 0 0 50px rgba(59, 130, 246, 0.2);
+    position: relative;
+    z-index: 10;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.img-container:hover img {
+    transform: scale(1.05);
+}
+
 @keyframes float {
-    0% { transform: translateY(0px) scale(1); }
-    50% { transform: translateY(-20px) scale(1.1); }
-    100% { transform: translateY(0px) scale(1); }
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
 }
 
 /* About Section */
@@ -387,9 +424,17 @@ h1, h2, h3, h4 {
     transition: transform 0.5s ease;
 }
 
-.color-1 { background: linear-gradient(45deg, #1a2980, #26d0ce); }
-.color-2 { background: linear-gradient(45deg, #ee0979, #ff6a00); }
-.color-3 { background: linear-gradient(45deg, #8e2de2, #4a00e0); }
+.color-1 {
+    background: linear-gradient(45deg, #1a2980, #26d0ce);
+}
+
+.color-2 {
+    background: linear-gradient(45deg, #ee0979, #ff6a00);
+}
+
+.color-3 {
+    background: linear-gradient(45deg, #8e2de2, #4a00e0);
+}
 
 .project-card:hover .placeholder-img {
     transform: scale(1.05);
@@ -418,7 +463,8 @@ h1, h2, h3, h4 {
 
 .tags span {
     font-size: 0.8rem;
-    padding: 0.3rem 0.8rem; /* Corrected typo */
+    padding: 0.3rem 0.8rem;
+    /* Corrected typo */
     background: rgba(255, 255, 255, 0.05);
     border-radius: 4px;
     color: var(--text-muted);
@@ -535,12 +581,12 @@ h1, h2, h3, h4 {
     .section-title {
         font-size: 2.5rem;
     }
-    
+
     .contact-container {
         grid-template-columns: 1fr;
         gap: 3rem;
     }
-    
+
     .headline {
         font-size: 3rem;
     }
@@ -548,28 +594,29 @@ h1, h2, h3, h4 {
 
 @media (max-width: 768px) {
     .nav-links {
-        display: none; /* Mobile menu implementation later if needed */
+        display: none;
+        /* Mobile menu implementation later if needed */
     }
-    
+
     .hamburger {
         display: block;
     }
-    
+
     .hero-container {
         flex-direction: column-reverse;
         text-align: center;
         gap: 2rem;
     }
-    
+
     .hero-visual {
         width: 300px;
         height: 300px;
     }
-    
+
     .hero-btns {
         justify-content: center;
     }
-    
+
     .stats {
         justify-content: center;
     }
